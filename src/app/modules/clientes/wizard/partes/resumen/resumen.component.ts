@@ -10,35 +10,31 @@ export class ResumenComponent implements OnInit {
 
   @Input()
   parentForm: FormGroup;
-  
+
   @Output()
   anterior = new EventEmitter();
 
   @Output()
   siguiente = new EventEmitter();
-  
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  get datosLaboralesForm()
-  {
+  get datosLaboralesForm() {
     return this.parentForm.get('datosLaborales');
   }
 
-  get datosPersonalesForm()
-  {
+  get datosPersonalesForm() {
     return this.parentForm.get('datosPersonales');
   }
 
-  
-  
-  get TelefonosPersonalesControl(): FormArray { 
+  get TelefonosPersonalesControl(): FormArray {
     return this.datosPersonalesForm.get('Telefonos') as FormArray;
   }
 
-  get TelefonosLaboralesControl(): FormArray { 
+  get TelefonosLaboralesControl(): FormArray {
     return this.datosLaboralesForm.get('Telefonos') as FormArray;
   }
 
@@ -49,5 +45,5 @@ export class ResumenComponent implements OnInit {
   private _anterior() {
     this.anterior.emit();
   }
-  
+
 }

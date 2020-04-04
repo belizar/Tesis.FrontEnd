@@ -6,13 +6,13 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-  
+
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const result = this.authService.isLoggedIn;
-    if(!result) {
-      console.log('not logged in')
+    if (!result) {
+      console.log('not logged in');
       this.router.navigate(['/login'], {
         queryParams: {
           return: state.url

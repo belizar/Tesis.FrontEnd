@@ -22,9 +22,9 @@ import { ResumenEditComponent } from './wizard-edit/partes/resumen/resumen-edit.
 
 
 @NgModule({
-  declarations: [WizardComponent, 
-                 DatosPersonalesComponent, 
-                 DatosLaboralesComponent, 
+  declarations: [WizardComponent,
+                 DatosPersonalesComponent,
+                 DatosLaboralesComponent,
                  ResumenComponent,
                  ListaClientesComponent,
                   WizardEditComponent,

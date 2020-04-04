@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers/clientes.reducer';
-import { Cliente, ClienteForm, Trabajos } from 'src/app/models/cliente';
+import { Cliente, Trabajos } from 'src/app/models/cliente';
 import { CrearCliente, MostrarCliente } from 'src/app/store/actions/clientes.actions';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -36,8 +36,8 @@ export class WizardEditComponent implements OnInit {
       this.store.dispatch(MostrarCliente({id}));
     });
 
-    
-    this.store.pipe(map( ({clientes:{cliente}}: any) => cliente))
+    this.store
+        .pipe(map( ({clientes: {cliente}}: any) => cliente))
         .subscribe(cliente => this.CrearForm(cliente));
 }
 
@@ -70,18 +70,18 @@ export class WizardEditComponent implements OnInit {
   }
 
   Guardar() {
-    const clienteForm = this.nuevoClienteForm.value as ClienteForm;
+    const clienteForm = this.nuevoClienteForm.value;
     const cliente = new Cliente();
-    cliente.ID = clienteForm["datosPersonales"]["ID"];
-    cliente.Nombre = clienteForm["datosPersonales"]["Nombre"];
-    cliente.Apellido = clienteForm["datosPersonales"]["Apellido"];
-    cliente.CUIL = clienteForm["datosPersonales"]["CUIL"];
-    cliente.Email = clienteForm["datosPersonales"]["Email"];
-    cliente.FechaDeNacimiento = clienteForm["datosPersonales"]["FechaDeNacimiento"];
-    cliente.DomicilioPersonal = clienteForm["datosPersonales"]["DomicilioPersonal"];
-    cliente.Telefonos = clienteForm["datosPersonales"]["Telefonos"];
+    cliente.ID = clienteForm.datosPersonales.ID;
+    cliente.Nombre = clienteForm.datosPersonales.Nombre;
+    cliente.Apellido = clienteForm.datosPersonales.Apellido;
+    cliente.CUIL = clienteForm.datosPersonales.CUIL;
+    cliente.Email = clienteForm.datosPersonales.Email;
+    cliente.FechaDeNacimiento = clienteForm.datosPersonales.FechaDeNacimiento;
+    cliente.DomicilioPersonal = clienteForm.datosPersonales.DomicilioPersonal;
+    cliente.Telefonos = clienteForm.datosPersonales.Telefonos;
     cliente.Trabajos = new Array<Trabajos>();
-    cliente.Trabajos.push(clienteForm["datosLaborales"]);
+    cliente.Trabajos.push(clienteForm.datosLaborales);
 
     this.store.dispatch(CrearCliente({cliente}));
   }

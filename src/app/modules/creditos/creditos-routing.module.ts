@@ -4,11 +4,11 @@ import { NuevoCreditoComponent } from './nuevo-credito/nuevo-credito.component';
 import { ListaCreditosComponent } from './lista-creditos/lista-creditos.component';
 
 const routes: Routes = [
-  { 
+  {
       path: 'nuevo-credito',
       component: NuevoCreditoComponent
   },
-  { 
+  {
     path: 'ver',
     component: ListaCreditosComponent
   }

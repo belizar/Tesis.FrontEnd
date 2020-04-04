@@ -6,8 +6,8 @@ import { LoggedInComponent } from './logged-in/logged-in.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent 
-  }, 
+    component: LoginComponent
+  },
   {
     path: 'loggedin',
     component: LoggedInComponent

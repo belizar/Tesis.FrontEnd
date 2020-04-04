@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { MostrarClientes } from 'src/app/store/actions/clientes.actions';
-import { AppState } from 'src/app/store/reducers';
-
 
 @Component({
   selector: 'app-home',
@@ -11,7 +7,7 @@ import { AppState } from 'src/app/store/reducers';
 })
 export class HomeComponent implements OnInit {
 
-  courses : any;
+  courses: any;
   constructor() { }
 
   ngOnInit() {
