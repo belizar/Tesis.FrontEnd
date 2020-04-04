@@ -1,0 +1,7 @@
+<div class="togglebutton" >
+  <label (click)="toggle($event)">
+    <input type="checkbox" checked #someInput [disabled]="disabled">
+    <span class="toggle" [ngClass]="{'success': value, 'danger': !value}" ></span>
+    <ng-content></ng-content>
+  </label>
+</div>

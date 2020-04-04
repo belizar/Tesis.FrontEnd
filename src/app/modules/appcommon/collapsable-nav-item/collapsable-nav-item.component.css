@@ -1,0 +1,13 @@
+.sidebar-custom {
+  margin: 0;
+  position: relative;
+  transform: translateX(0);
+  opacity: 1;
+  white-space: nowrap;
+  display: block;
+}
+
+.caret.open {
+  transform: rotate(180deg);
+}
+

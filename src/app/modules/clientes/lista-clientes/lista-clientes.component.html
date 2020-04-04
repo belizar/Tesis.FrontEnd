@@ -1,0 +1,59 @@
+<app-card title="Clientes">
+  <div card-header-buttons>
+      <button class="btn btn-success btn-link"
+              style="color: white"
+              [routerLink]="['..','nuevo-cliente']">
+          <span class="btn-label">
+            <i class="material-icons">add</i>
+          </span>
+          Nuevo
+        <div class="ripple-container"></div></button>
+  </div>
+  <div *ngIf="clientes$ | async as clientes; else empty">
+    <div class="table-responsive table-hover">
+      <table class="table">
+        <thead class=" text-primary">
+          <tr><th>
+            ID
+          </th>
+          <th>
+            Nombre
+          </th>
+          <th>
+            Apellido
+          </th>
+          <th>
+            Domicilio
+          </th>
+          <th>
+          </th>
+        </tr></thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>
+              {{cliente.ID}}
+            </td>
+            <td>
+              {{cliente.Nombre}}
+            </td>
+            <td>
+              {{cliente.Apellido}}
+            </td>
+            <td>
+              Oud-Turnhout
+            </td>
+            <td>
+              <button class="btn btn-primary  btn-round btn-fab" (click)="editar(cliente.ID)">
+                <i class="material-icons">edit</i>
+                <div class="ripple-container"></div>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-template #empty>
+    <app-empty-state image="add-content" title="No hay clientes por aquí"></app-empty-state>
+  </ng-template>
+</app-card>

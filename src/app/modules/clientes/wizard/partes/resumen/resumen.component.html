@@ -1,0 +1,265 @@
+<div [formGroup]="datosPersonalesForm">
+    
+  <div class="title">
+      <h4>Datos Personales</h4>
+      <hr/>
+    </div>
+
+  <div class="row">
+
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="Nombre"
+              formControlName="Nombre"
+              readonly="true"
+              label="Nombre"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="Apellido"
+              formControlName="Apellido"
+              readonly="true"
+              label="Apellido"></app-input>
+    </div>
+
+    <div class="form-group bmd-form-group col-2">
+        <app-input 
+                name="Email"
+                formControlName="Email"
+                readonly="true"
+                label="Email"></app-input>
+      </div>
+    
+      <div class="form-group bmd-form-group col-2">
+        <app-input 
+                  name="CUIL"
+                  formControlName="CUIL"
+                  readonly="true"
+                  label="CUIL"></app-input>
+      </div>
+
+  </div>
+
+  <div class="title">
+    <h4>Domicilio Personal</h4>
+    <hr/>
+  </div>
+
+  <div class="row" formGroupName="DomicilioPersonal">
+
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="Localidad"
+              formControlName="Localidad"
+              readonly="true"
+              label="Localidad"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="Barrio"
+              formControlName="Barrio"
+              readonly="true"
+              label="Barrio"></app-input>
+    </div>
+  
+    <div class="form-group bmd-form-group col-2">
+        <app-input 
+                name="Calle"
+                formControlName="Calle"
+                readonly="true"
+                label="Calle"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+                name="Numero"
+                formControlName="Numero"
+                readonly="true"
+                label="Nº"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+              name="Lote"
+              formControlName="Lote"
+              readonly="true"
+              label="Lote"></app-input>
+    </div>
+  
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+              name="Piso"
+              formControlName="Piso"
+              readonly="true"
+              label="Piso"></app-input>
+    </div>
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+              name="Depto"
+              formControlName="Depto"
+              readonly="true"
+              label="Depto"></app-input>
+    </div>
+  </div>
+
+  <div class="title">
+    <h4>Telefonos de contacto</h4>
+    <hr/>
+  </div>
+  
+  <div formArrayName="Telefonos"
+      *ngFor="let telefono of TelefonosPersonalesControl.controls; let i = index;">
+      <div [formGroupName]="i"
+           class="row">
+           <app-input 
+                  name="Numero"
+                  formControlName="Numero"
+                  readonly="true"
+                  label="Numero"
+                  class="col-2"></app-input>
+          <app-input 
+                  name="Descripcion"
+                  formControlName="Descripcion"
+                  readonly="true"
+                  label="Descripcion"
+                  class="col-2"></app-input>
+                  <button style="margin-top: 15px;" 
+                          class="btn btn-danger  btn-round btn-fab"
+                          (click)="QuitarTelefono(i)">
+                    <i class="material-icons">close</i>
+                    <div class="ripple-container"></div>
+                  </button>
+      </div>
+
+  </div>
+</div>
+
+
+<div [formGroup]="datosLaboralesForm">
+    
+  <div class="title">
+      <h4>Datos Laborales</h4>
+      <hr/>
+    </div>
+
+  <div class="row">
+
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="LugarDeTrabajo"
+              formControlName="LugarDeTrabajo"
+              readonly="true"
+              label="Lugar de trabajo"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="Sueldo"
+              formControlName="Sueldo"
+              readonly="true"
+              label="Sueldo"></app-input>
+    </div>
+
+    <div class="form-group bmd-form-group col-2">
+        <app-input 
+                name="Cargo"
+                formControlName="Cargo"
+                readonly="true"
+                label="Cargo"></app-input>
+      </div>
+    
+  </div>
+
+  <div class="title">
+    <h4>Domicilio Laboral</h4>
+    <hr/>
+  </div>
+
+  <div class="row" formGroupName="DomicilioLaboral">
+
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="Localidad"
+              formControlName="Localidad"
+              readonly="true"
+              label="Localidad"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-2">
+      <app-input 
+              name="Barrio"
+              formControlName="Barrio"
+              readonly="true"
+              label="Barrio"></app-input>
+    </div>
+  
+    <div class="form-group bmd-form-group col-2">
+        <app-input 
+                name="Calle"
+                formControlName="Calle"
+                readonly="true"
+                label="Calle"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+                name="Numero"
+                formControlName="Numero"
+                readonly="true"
+                label="Nº"></app-input>
+    </div>
+    
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+              name="Lote"
+              formControlName="Lote"
+              readonly="true"
+              label="Lote"></app-input>
+    </div>
+  
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+              name="Piso"
+              formControlName="Piso"
+              readonly="true"
+              label="Piso"></app-input>
+    </div>
+    <div class="form-group bmd-form-group col-1">
+      <app-input 
+              name="Depto"
+              formControlName="Depto"
+              readonly="true"
+              label="Depto"></app-input>
+    </div>
+  </div>
+
+  <div class="title">
+    <h4>Telefono Laboral</h4>
+    <hr/>
+  </div>
+  <div class="form-group bmd-form-group col-4">
+    <app-input 
+            name="TelefonoLaboral"
+            formControlName="TelefonoLaboral"
+            label="Telefono Laboral"></app-input>
+  </div>
+
+</div>
+
+
+<div class="d-flex justify-content-between">
+  <button class="btn btn-primary" (click)="_anterior()">
+    Anterior
+    <span class="btn-label btn-label-right">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </span>
+  <div class="ripple-container"></div></button>
+  <button class="btn btn-primary" (click)="_siguiente()">
+    Finalizar
+    <!-- <span class="btn-label btn-label-right">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </span> -->
+  <div class="ripple-container"></div></button>
+</div>

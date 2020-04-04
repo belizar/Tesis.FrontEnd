@@ -1,0 +1,19 @@
+<div class="card-collapse">
+  <div class="card-header" role="tab" id="headingOne">
+    <h5 class="mb-0">
+      <a  data-toggle="collapse" 
+          aria-expanded="true"
+          aria-controls="collapseOne"
+          class="collapsed"
+          (click)="togglePanel()">
+        {{title}}
+        <i class="material-icons">{{show ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</i>
+      </a>
+    </h5>
+  </div>
+  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+    <div class="card-body" *ngIf="show">
+        <ng-content select="[collapsible-panel-body]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<label class="form-check-label">
+  <input class="form-check-input" 
+         type="checkbox"
+         value="" 
+         [(ngModel)]="value"
+         (ngModelChange)="onModelChange($event)"
+         [disabled]="disable">
+         <ng-content></ng-content>
+  <span class="form-check-sign">
+    <span class="check"></span>
+  </span>
+</label>

@@ -1,0 +1,40 @@
+
+<!--
+    <app-dropdown display="Nombre"
+                      [data]="tiposDeTrabajo"
+                      [(ngModel)]="value.Tipo"
+                      label="Tipo de Tarea"
+                      name="TipoDeTrabajo"
+                      [disabled]="disabled"></app-dropdown>
+-->
+
+    <label class="bmd-label-floating">{{label}}</label>
+<div class="dropdown bootstrap-select" style="width: 100%;">
+    <select class="selectpicker" data-style="select-with-transition" multiple="" title="Choose City" data-size="7" tabindex="-98">
+        <!-- <option value="2">Paris</option> -->
+    </select>
+    <button type="button" (click)="toggle()" (clickOutside)="onClickedOutside($event)" class="btn dropdown-toggle select-with-transition bs-placeholder" data-toggle="dropdown" role="button" title="Choose City" aria-expanded="false">
+        <div class="filter-option">
+            <div class="filter-option-inner">
+                <div class="filter-option-inner-inner">{{selected ? selected[display] : textoSeleccion}}</div>
+            </div>
+        </div>
+        <div class="ripple-container"></div>
+    </button>
+    <div class="dropdown-menu"  
+         [ngClass]="{'show': show}"  
+         role="combobox" 
+         x-placement="bottom-start" 
+         style="width: 100%; max-height: 276px; overflow: hidden; min-width: 220px; position: absolute; top: 39px; left: 1px; will-change: top, left;">
+        <div class="inner show" role="listbox" aria-expanded="false" tabindex="-1" style="max-height: 266px; overflow-y: auto; width: 100%;">
+            <ul class="dropdown-menu inner show" style="width: 100%;">
+                <li *ngFor="let item of data">
+                  <a role="option" (click)="select(item)" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false">
+                    <span class="text">{{item[display]}}</span>
+                  </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<app-card title="Clientes">
+  <div card-header-buttons>
+      <button class="btn btn-success btn-link"
+              style="color: white"
+              [routerLink]="['..','nuevo-cliente']">
+          <span class="btn-label">
+            <i class="material-icons">add</i>
+          </span>
+          Nuevo
+        <div class="ripple-container"></div></button>
+  </div>
+  <app-empty-state image="add-file" title="No hay créditos por aquí" *ngIf="!creditos"></app-empty-state>
+  <div class="table-responsive table-hover" *ngIf="creditos">
+    <table class="table">
+      <thead class=" text-primary">
+        <tr><th>
+          ID
+        </th>
+        <th>
+          Nombre
+        </th>
+        <th>
+          Apellido
+        </th>
+        <th>
+          Domicilio
+        </th>
+        <th>
+        </th>
+      </tr></thead>
+      <tbody>
+        <!-- <tr *ngFor="let cliente of clientes">
+          <td>
+            {{cliente.ID}}
+          </td>
+          <td>
+            {{cliente.Nombre}}
+          </td>
+          <td>
+            {{cliente.Apellido}}
+          </td>
+          <td>
+            Oud-Turnhout
+          </td>
+          <td>
+            <button class="btn btn-primary  btn-round btn-fab">
+              <i class="material-icons">edit</i>
+            <div class="ripple-container"></div>
+          </button>
+          </td>
+        </tr> -->
+
+      </tbody>
+    </table>
+  </div>
+</app-card>

@@ -1,0 +1,17 @@
+
+<li class="nav-item" [ngClass]="{'active': active}">
+  <a class="nav-link" 
+     [ngClass]="{'collapsed': !show}"
+     (click)="toggle()">
+    <i class="material-icons">{{icon}}</i>
+    <span class="sidebar-custom"> 
+      {{title}}
+      <b class="caret" [ngClass]="{'open': show}"></b>
+    </span>
+  </a>
+  <div class="collapse" [ngClass]="{'show': show}">
+    <ul class="nav">
+     <ng-content></ng-content>
+    </ul>
+  </div>
+</li>

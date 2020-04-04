@@ -1,0 +1,9 @@
+<label [for]="name" 
+       class="bmd-label-floating">{{label}}</label>
+<input type="text" 
+       class="form-control" 
+       [id]="name" 
+       [(ngModel)]="value" 
+       [disabled]="disabled"
+       [readonly]="readonly"
+       (ngModelChange)="onModelChange($event)">

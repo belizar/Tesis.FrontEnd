@@ -1,0 +1,13 @@
+<label class="form-check-label" 
+       *ngFor="let item of data"
+       (click)="select(item)">
+  <input class="form-check-input" 
+         type="radio"
+         [value]="selected && selected[value] && item[value] && item[value] == selected[value]"
+         [name]="groupName"
+        > 
+    {{item[display]}}
+    <span class="circle">
+    <span class="check"></span>
+  </span>
+</label>

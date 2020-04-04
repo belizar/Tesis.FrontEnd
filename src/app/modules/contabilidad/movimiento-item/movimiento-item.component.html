@@ -1,0 +1,36 @@
+
+    <td>
+      {{movimiento.Fecha | date: 'dd/MM/yyyy'}}
+    </td>
+    <td>
+      {{movimiento.Concepto}}
+    </td>
+    <td>
+      <span *ngIf="movimiento.TipoId == 1" class="success">$ {{movimiento.Monto}}</span>
+    </td>
+    <td>
+      <span  *ngIf="movimiento.TipoId == 2">$ {{movimiento.Monto}}</span>
+    </td>
+    <td>
+      <span [ngClass]="{ 'saldoNegativo': movimiento.Saldo < 0, 'saldoPositivo': movimiento.Saldo >= 0 }">$ {{movimiento.Saldo}}</span>
+    </td>
+    <td>
+        <!-- movimiento.Fecha.getMonth()!= (mesActivo -1) -->
+      <i *ngIf="mostrarMenu"
+          [ngbPopover]="popContent"
+           #popOver="ngbPopover"
+           (click)="openContextualMenu(movimiento)"
+           placement="left"
+           triggers="manual"
+           class="fa fa-ellipsis-v rowHover pointer m-1"></i></td>
+
+  <ng-template #popContent>
+      <div (clickOutside)="cerrarMenuContextual()"
+           class="dropdown-menu"
+           aria-labelledby="dropdownMenuButton"
+           style="display: contents;" >
+        <a class="dropdown-item on-hover-primary" (click)="opcionCrearAjuste()">
+          <em class="fa fa-plus mr-1"></em> Crear ajuste
+        </a>
+      </div>
+  </ng-template>

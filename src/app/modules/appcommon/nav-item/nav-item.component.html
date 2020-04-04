@@ -1,0 +1,9 @@
+<li class="nav-item" 
+    [ngClass]="{'active': active}">
+  <a class="nav-link" (click)="onNavItem()">
+    <i class="material-icons">{{icon}}</i>
+    <p> 
+      {{text}}
+    </p>
+  </a>
+</li>
