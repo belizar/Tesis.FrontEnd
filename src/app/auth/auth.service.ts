@@ -1,8 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Router } from  "@angular/router";
-import { auth } from  'firebase/app';
-import { AngularFireAuth } from  "@angular/fire/auth";
-import { User } from  'firebase';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -33,14 +32,14 @@ export class AuthService {
       await this.afAuth.auth.signInWithEmailAndPassword(email, password);
       this.logging.emit(false);
       // this.router.navigate(['app']);
-      this.afAuth.auth.currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+      this.afAuth.auth.currentUser.getIdToken(/* forceRefresh */ true).then((idToken) => {
         // Send token to your backend via HTTPS
         // ...
         console.log(idToken);
-      }).catch(function(error) {
+      }).catch( (error) => {
         // Handle error
       });
-    } catch(e) {
+    } catch (e) {
 
     }
   }

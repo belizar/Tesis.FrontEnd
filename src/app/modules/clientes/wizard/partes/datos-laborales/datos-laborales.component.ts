@@ -11,7 +11,7 @@ export class DatosLaboralesComponent implements OnInit {
 
   @Input()
   parentForm: FormGroup;
-  
+
   @Output()
   anterior = new EventEmitter();
 
@@ -25,8 +25,7 @@ export class DatosLaboralesComponent implements OnInit {
   ngOnInit() {
   }
 
-  get datosLaboralesForm()
-  {
+  get datosLaboralesForm() {
     return this.parentForm.get('datosLaborales');
   }
 
@@ -34,8 +33,8 @@ export class DatosLaboralesComponent implements OnInit {
     return this.datosLaboralesForm.get('datosLaborales') as FormArray;
   }
 
-  
-  get TelefonosControl(): FormArray { 
+
+  get TelefonosControl(): FormArray {
     return this.datosLaboralesForm.get('Telefonos') as FormArray;
   }
 

@@ -56,17 +56,17 @@ export class WizardComponent implements OnInit {
   }
 
   Guardar() {
-    const clienteForm = this.nuevoClienteForm.value as ClienteForm;
+    const clienteForm = this.nuevoClienteForm.value;
     const cliente = new Cliente();
-    cliente.Nombre = clienteForm["datosPersonales"]["Nombre"];
-    cliente.Apellido = clienteForm["datosPersonales"]["Apellido"];
-    cliente.CUIL = clienteForm["datosPersonales"]["CUIL"];
-    cliente.Email = clienteForm["datosPersonales"]["Email"];
-    cliente.FechaDeNacimiento = clienteForm["datosPersonales"]["FechaDeNacimiento"];
-    cliente.DomicilioPersonal = clienteForm["datosPersonales"]["DomicilioPersonal"];
-    cliente.Telefonos = clienteForm["datosPersonales"]["Telefonos"];
+    cliente.Nombre = clienteForm.datosPersonales.Nombre;
+    cliente.Apellido = clienteForm.datosPersonales.Apellido;
+    cliente.CUIL = clienteForm.datosPersonales.CUIL;
+    cliente.Email = clienteForm.datosPersonales.Email;
+    cliente.FechaDeNacimiento = clienteForm.datosPersonales.FechaDeNacimiento;
+    cliente.DomicilioPersonal = clienteForm.datosPersonales.DomicilioPersonal;
+    cliente.Telefonos = clienteForm.datosPersonales.Telefonos;
     cliente.Trabajos = new Array<Trabajos>();
-    cliente.Trabajos.push(clienteForm["datosLaborales"]);
+    cliente.Trabajos.push(clienteForm.datosLaborales);
 
     this.store.dispatch(CrearCliente({cliente}));
   }

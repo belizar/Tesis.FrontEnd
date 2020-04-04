@@ -8,7 +8,7 @@ import * as moment from 'moment';
 })
 export class WizardService {
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder) {
   }
 
   CrearForm(cliente: Cliente = null) {
@@ -23,37 +23,37 @@ export class WizardService {
           FechaDeNacimiento: new FormControl(null, [Validators.required]),
           Telefonos: new FormArray([], [Validators.required]),
 
-          DomicilioPersonal: new FormGroup({ 
+          DomicilioPersonal: new FormGroup({
             Localidad: new FormControl(null, [Validators.required]),
             Barrio: new FormControl(null, [Validators.required]),
-            Calle: new FormControl(null, [Validators.required]),        
-            Lote: new FormControl(null, [Validators.required]),        
-            Numero: new FormControl(null, [Validators.required]),        
+            Calle: new FormControl(null, [Validators.required]),
+            Lote: new FormControl(null, [Validators.required]),
+            Numero: new FormControl(null, [Validators.required]),
             Piso: new FormControl(null, [Validators.required]),
             Depto: new FormControl(null, [Validators.required]),
             }),
-          }),                               
+          }),
 
       datosLaborales: new FormGroup({
-          
+
         LugarDeTrabajo: new FormControl(null, [Validators.required]),
         Sueldo: new FormControl(null, [Validators.required]),
         Cargo: new FormControl(null, [Validators.required]),
         FechaDeIngreso: new FormControl(null, [Validators.required]),
         TelefonoLaboral: new FormControl(null, [Validators.required]),
-        
-        DomicilioLaboral: new FormGroup({ 
+
+        DomicilioLaboral: new FormGroup({
           Localidad: new FormControl(null, [Validators.required]),
           Barrio: new FormControl(null, [Validators.required]),
-          Calle: new FormControl(null, [Validators.required]),        
-          Lote: new FormControl(null, [Validators.required]),        
-          Numero: new FormControl(null, [Validators.required]),        
+          Calle: new FormControl(null, [Validators.required]),
+          Lote: new FormControl(null, [Validators.required]),
+          Numero: new FormControl(null, [Validators.required]),
           Piso: new FormControl(null, [Validators.required]),
           Depto: new FormControl(null, [Validators.required]),
             })
 
           })
-      }) : 
+      }) :
       new FormGroup({
 
         datosPersonales: new FormGroup({
@@ -67,22 +67,22 @@ export class WizardService {
                       cliente.Telefonos.map( tel =>
                         this.NuevoTelefono(tel.Numero, tel.Descripcion, tel.ID))
                       ),
-  
-            DomicilioPersonal: new FormGroup({ 
+
+            DomicilioPersonal: new FormGroup({
               Localidad: new FormControl(cliente.DomicilioPersonal.Localidad),
               Barrio: new FormControl(cliente.DomicilioPersonal.Barrio),
-              Calle: new FormControl(cliente.DomicilioPersonal.Calle),        
-              Lote: new FormControl(cliente.DomicilioPersonal.Localidad),        
-              Numero: new FormControl(cliente.DomicilioPersonal.Numero),        
+              Calle: new FormControl(cliente.DomicilioPersonal.Calle),
+              Lote: new FormControl(cliente.DomicilioPersonal.Localidad),
+              Numero: new FormControl(cliente.DomicilioPersonal.Numero),
               Piso: new FormControl(cliente.DomicilioPersonal.Piso),
               Depto: new FormControl(cliente.DomicilioPersonal.Depto),
               }),
-            }),                               
-  
-        datosLaborales: new FormArray(cliente.Trabajos.sort( (a, b) => 
+            }),
+
+        datosLaborales: new FormArray(cliente.Trabajos.sort( (a, b) =>
                                       new Date(`${a.FechaDeIngreso} 00:00:0000`) < new Date(`${b.FechaDeIngreso} 00:00:0000`) ? 1 : 0)
               .map(trabajo => this.NuevoDatosLaborales(trabajo)))
-      })
+      });
   }
 
   NuevoDatosLaborales(trabajo: Trabajos) {
@@ -93,26 +93,25 @@ export class WizardService {
       Cargo: new FormControl(trabajo.Cargo),
       FechaDeIngreso: new FormControl(new Date(`${trabajo.FechaDeIngreso} 00:00:0000`)),
       TelefonoLaboral: new FormControl(trabajo.TelefonoLaboral),
-      DomicilioLaboral: new FormGroup({ 
+      DomicilioLaboral: new FormGroup({
         Localidad: new FormControl(trabajo.DomicilioLaboral.Localidad),
         Barrio: new FormControl(trabajo.DomicilioLaboral.Barrio),
-        Calle: new FormControl(trabajo.DomicilioLaboral.Calle),        
-        Lote: new FormControl(trabajo.DomicilioLaboral.Lote),        
-        Numero: new FormControl(trabajo.DomicilioLaboral.Numero),        
+        Calle: new FormControl(trabajo.DomicilioLaboral.Calle),
+        Lote: new FormControl(trabajo.DomicilioLaboral.Lote),
+        Numero: new FormControl(trabajo.DomicilioLaboral.Numero),
         Piso: new FormControl(trabajo.DomicilioLaboral.Piso),
         Depto: new FormControl(trabajo.DomicilioLaboral.Depto),
           })
-        })
-
+        });
   }
 
   NuevoTelefono(numero, descripcion, id = null) {
-    let form = new FormGroup({ 
+    const form = new FormGroup({
       Numero: new FormControl(numero),
       Descripcion: new FormControl(descripcion)
     });
 
-    if(id) form.addControl('ID', new FormControl(id));
+    if (id) { form.addControl('ID', new FormControl(id)); }
 
     return form;
   }

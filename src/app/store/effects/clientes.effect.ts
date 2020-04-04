@@ -27,14 +27,13 @@ export class ClientesEffects {
                                               this.common.Apollo(getClientes)
                                                   .valueChanges
                                                   .pipe(
-                                                    map(result => 
-                                                      {
+                                                    map(result => {
                                                         console.log(result);
-                                                        return MostrarClientesComplete({clientes: result.data.Clientes})
+                                                        return MostrarClientesComplete({clientes: result.data.Clientes});
                                                       })
                                                   )
                                             )
-                                          )
+                                          );
 
   @Effect()
   CrearCliente: Observable<any> = this.actions
@@ -43,7 +42,7 @@ export class ClientesEffects {
                                             switchMap( (payload: any) =>
                                               this.clientes.Crear(payload.cliente)
                                                   .pipe(
-                                                        map(res => { 
+                                                        map(res => {
                                                             // this.notification.Success('Guardado con Éxito');
                                                             return CrearClienteComplete();
                                                           }
@@ -60,16 +59,15 @@ export class ClientesEffects {
 MostrarCliente: Observable<any> = this.actions
                                         .pipe(
                                           ofType('MOSTRAR_CLIENTE'),
-                                          switchMap( ({id}) =>
-                                          {
+                                          switchMap( ({id}) => {
                                             return this.common.Apollo(getCliente, {Id: id})
                                               .valueChanges
                                               .pipe(
-                                                map(({data: {Cliente} }) => { 
+                                                map(({data: {Cliente} }) => {
                                                     return MostrarClienteComplete({cliente: Cliente[0]});
                                                   }
                                                 )
-                                              )
+                                              );
                                             }
                                           )
                                         );
@@ -79,13 +77,10 @@ MostrarCliente: Observable<any> = this.actions
 CrearClienteComplete: Observable<any> = this.actions
                                         .pipe(
                                           ofType('CREAR_CLIENTE_COMPLETE'),
-                                          tap( () =>
-                                          {
+                                          tap( () => {
                                             this.router.navigate(['app', 'clientes', 'ver']);
                                             }
                                           )
                                         );
-
-                                        
 
 }

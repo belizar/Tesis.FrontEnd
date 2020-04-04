@@ -10,20 +10,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  isWaiting: boolean = false;
+  isWaiting = false;
   getState: Observable<any>;
 
   @HostBinding('class') classes = 'wrapper wrapper-full-page';
-  
-  return: string = '';
+
+  return = '';
 
   constructor(private auth: AuthService,
               private router: Router,
-              private route: ActivatedRoute) { 
+              private route: ActivatedRoute) {
   }
   ngOnInit() {
     this.route.queryParams
-    .subscribe(params => this.return = params['return'] || '/app');
+    .subscribe(params => this.return = params.return || '/app');
     this.auth
         .logging
         .subscribe(logging => this.isWaiting = logging);
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   async login(event, userName, password) {
     event.preventDefault();
-    
+
     await this.auth.login(userName, password);
     this.router.navigateByUrl(this.return);
   }

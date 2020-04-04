@@ -14,20 +14,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./lista-clientes.component.css']
 })
 export class ListaClientesComponent implements OnInit {
-  
+
   storeSubscription: Subscription;
   clientes$: Observable<any>;
 
-  constructor(private store: Store<State>, private router : Router) { }
+  constructor(private store: Store<State>, private router: Router) { }
 
   ngOnInit() {
-    this.clientes$ = this.store.pipe(map(({clientes:{clientesList}}: any)  => clientesList));
+    this.clientes$ = this.store.pipe(map(({clientes: {clientesList}}: any)  => clientesList));
 
     this.store.dispatch(MostrarClientes());
   }
 
   editar(id: number) {
-    this.router.navigate(['app','clientes', 'editar', id]);
+    this.router.navigate(['app', 'clientes', 'editar', id]);
   }
 
 }

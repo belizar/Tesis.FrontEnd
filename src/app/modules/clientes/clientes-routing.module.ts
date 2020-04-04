@@ -6,18 +6,18 @@ import { WizardEditComponent } from './wizard-edit/wizard-edit.component';
 
 
 const routes: Routes = [
-  { 
-      path: 'nuevo-cliente',
-      component: WizardComponent
+  {
+    path: 'nuevo-cliente',
+    component: WizardComponent
   } ,
-  { 
+  {
     path: 'ver',
     component: ListaClientesComponent
   },
-  { 
+  {
     path: 'editar/:id',
     component: WizardEditComponent
-  } 
+  }
   ];
 
 @NgModule({

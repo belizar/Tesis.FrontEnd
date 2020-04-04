@@ -1,6 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { Cliente as ClienteType } from 'src/app/graphql/types';
-import { TipoDeTelefono as TipoDeTelefonoType } from 'src/app/graphql/types';
 import { Cliente, TipoDeTelefono } from 'src/app/models/cliente';
 
 export const CrearCliente = createAction(

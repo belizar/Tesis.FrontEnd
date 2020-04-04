@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
-import { TipoDeTelefono } from 'src/app/models/cliente';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { WizardService } from '../../wizard.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class DatosPersonalesComponent implements OnInit {
 
   @Input()
   parentForm: FormGroup;
-  
+
   @Output()
   siguiente = new EventEmitter();
 
@@ -22,12 +21,11 @@ export class DatosPersonalesComponent implements OnInit {
   ngOnInit() {
   }
 
-  get datosPersonalesForm()
-  {
+  get datosPersonalesForm() {
     return this.parentForm.get('datosPersonales');
   }
 
-  get TelefonosControl(): FormArray { 
+  get TelefonosControl(): FormArray {
     return this.datosPersonalesForm.get('Telefonos') as FormArray;
   }
 
@@ -46,9 +44,7 @@ export class DatosPersonalesComponent implements OnInit {
   }
 
   private _siguiente() {
-    
-    if(this.datosPersonalesForm.valid)
-    {
+    if (this.datosPersonalesForm.valid) {
       this.siguiente.emit();
     }
   }

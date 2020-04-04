@@ -1,10 +1,9 @@
-import { NotificationComponent } from '../modules/appcommon/notification/notification.component';
 
 export class Cliente {
   public ID?: number;
   public NroCliente?: number;
-  public Nombre?: String;
-  public Apellido?: String;
+  public Nombre?: string;
+  public Apellido?: string;
   public CUIL?: number;
   public Email?: string;
   public FechaDeNacimiento?: Date;
@@ -17,8 +16,8 @@ export class Cliente {
 export class ClienteForm {
   public ID?: number;
   public NroCliente?: number;
-  public Nombre?: String;
-  public Apellido?: String;
+  public Nombre?: string;
+  public Apellido?: string;
   public CUIL?: number;
   public Email?: string;
   public FechaDeNacimiento?: Date;
@@ -28,7 +27,7 @@ export class ClienteForm {
 }
 
 export class Telefono {
-  ID?:  number;
+  ID?: number;
   Numero?: number;
   Descripcion: string;
 }
@@ -47,7 +46,7 @@ export class TipoDeTelefono {
 
 export class EstadoCliente {
   ID?: Estado;
-  Nombre?: String;
+  Nombre?: string;
 }
 
 export enum Estado {
@@ -62,16 +61,15 @@ export enum Estado {
 }
 
 export class Domicilio {
-  public Localidad?: String;
-  public Barrio?: String;
-  public Calle?: String;
+  public Localidad?: string;
+  public Barrio?: string;
+  public Calle?: string;
   public Numero?: number;
   public Lote?: number;
   public Manzana?: number;
   public Piso?: number;
   public Depto?: string;
 
-  
   get textoDireccion() {
     return `${this.Localidad}, ${this.Barrio}, ${this.Calle} ${this.Numero}`;
   }
@@ -79,7 +77,7 @@ export class Domicilio {
 
 export class Trabajos {
   public ID?: number;
-  public LugarDeTrabajo: String;
+  public LugarDeTrabajo: string;
   public Sueldo: number;
 
   private _sueldo: number;
@@ -90,7 +88,7 @@ export class Trabajos {
     this._sueldo = v;
   }
 
-  public Cargo: String;
+  public Cargo: string;
   public FechaDeIngreso: Date;
   public DomicilioLaboral: Domicilio;
   public esActual?: boolean;
