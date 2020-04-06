@@ -19,6 +19,7 @@ import { AppEffects } from './store/effects';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { httpInterceptorProviders } from './interceptors';
 import { GlobalEffects } from './store/effects/global.effects';
+import { AppcommonModule } from './modules/appcommon/appcommon.module';
 
 
 const config = {
@@ -48,7 +49,8 @@ const config = {
     HttpLinkModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([GlobalEffects]),
-    NgbModule
+    NgbModule,
+    AppcommonModule
   ],
   providers: [ httpInterceptorProviders ],
   bootstrap: [AppComponent]

@@ -21,6 +21,9 @@ import { NgbDatepickerModule, NgbModule, NgbDateParserFormatter, NgbDateAdapter,
 import { EmptyStateComponent } from './empty-state/empty-state.component';
 import { MainTitleComponent } from './main-title/main-title.component';
 import { MainTitleService } from './main-title/main-title.service';
+import { LoaderComponent } from './loader/loader.component';
+import { FooterPagerComponent } from './footer-pager/footer-pager.component';
+import { FooterPagerService } from './footer-pager/footer-pager.service';
 
 @NgModule({
   declarations: [CardComponent,
@@ -36,7 +39,9 @@ import { MainTitleService } from './main-title/main-title.service';
                  DropdownComponent,
                  DatepickerComponent,
                  EmptyStateComponent,
-                 MainTitleComponent
+                 MainTitleComponent,
+                 LoaderComponent,
+                 FooterPagerComponent
                  ],
   imports: [
     CommonModule,
@@ -59,10 +64,13 @@ import { MainTitleService } from './main-title/main-title.service';
     DropdownComponent,
     DatepickerComponent,
     EmptyStateComponent,
-    MainTitleComponent
+    MainTitleComponent,
+    LoaderComponent,
+    FooterPagerComponent
   ],
-  providers: [NotificationService, 
+  providers: [NotificationService,
     MainTitleService,
+    FooterPagerService,
     {provide: NgbDateParserFormatter, useClass: DatepickerService},
     {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}
   ]

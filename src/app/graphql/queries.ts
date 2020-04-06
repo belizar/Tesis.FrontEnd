@@ -74,3 +74,28 @@ export const getCliente  =  gql`
                                   }
                                 }
                               `;
+
+
+
+
+
+export const getPageCliente  =  gql`
+query Cliente($Take: Int!, $Skip: Int!) {
+  PageCliente(Take: $Take, Skip: $Skip) {
+    Data {
+      ID
+      Nombre
+      Apellido
+    }
+    Total
+    HasNextPage
+  }
+}
+`;
+
+
+export const getPage = (page) => {
+  switch (page) {
+    case 'PageCliente': return getPageCliente;
+  }
+};

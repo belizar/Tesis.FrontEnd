@@ -7,6 +7,7 @@ import { Subscription, Observable } from 'rxjs';
 import * as $ from 'jquery';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { FooterPagerService } from '../../appcommon/footer-pager/footer-pager.service';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -18,12 +19,14 @@ export class ListaClientesComponent implements OnInit {
   storeSubscription: Subscription;
   clientes$: Observable<any>;
 
-  constructor(private store: Store<State>, private router: Router) { }
+  constructor(private footerPageService: FooterPagerService, private router: Router) { }
 
   ngOnInit() {
-    this.clientes$ = this.store.pipe(map(({clientes: {clientesList}}: any)  => clientesList));
-
-    this.store.dispatch(MostrarClientes());
+    this.footerPageService
+        .getPage('PageCliente', 5, 0)
+        .subscribe();
+    this.clientes$ = this.footerPageService
+                         .valueChanges;
   }
 
   editar(id: number) {

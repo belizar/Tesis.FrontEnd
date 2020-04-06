@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-12 col-md-5">
+      <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 40 entries</div>
+  </div>
+  <div class="col-sm-12 col-md-7">
+      <div class="dataTables_paginate paging_full_numbers" id="datatables_paginate">
+          <ul class="pagination">
+              <li class="paginate_button page-item previous disabled" id="datatables_previous">
+                  <a href="#" 
+                     [class.disabled]="currentPage === 1"
+                     aria-controls="datatables"
+                     data-dt-idx="1" tabindex="0" class="page-link" (click)="prev()">Anterior</a>
+              </li>
+            
+              <li   *ngFor="let page of pages | async" 
+                    class="paginate_button page-item">
+                    <a  aria-controls="datatables"
+                        
+                        data-dt-idx="2"
+                        tabindex="0"
+                        class="page-link" (click)="goTo(page)">{{page}}</a>
+            </li>
+          
+            <li class="paginate_button page-item next" id="datatables_next">
+                <a href="#" [class.disabled]="page === currentPage" aria-controls="datatables" data-dt-idx="6" tabindex="0" class="page-link" (click)="next()">Siguiente</a>
+            </li>
+          </ul>
+      </div>
+  </div>
+</div>
