@@ -19,6 +19,9 @@ steps:
     npm install -g @angular/cli
     npm install -g firebase-tools
     npm install
+    cd ./functions/
+    npm install
+    cd ../
     ng build
   displayName: 'npm install and build'
 
