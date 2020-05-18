@@ -6,11 +6,11 @@ import * as ClientesActions from '../actions/clientes.actions';
 export const clientesFeatureKey = 'clientes';
 
 export interface State {
-  clientesList: Cliente[],
-  cliente: Cliente
-};
+  clientesList: Cliente[];
+  cliente: Cliente;
+}
 
-export const initialState : State = {
+export const initialState: State = {
   clientesList: null,
   cliente: null
 };

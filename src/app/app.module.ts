@@ -13,13 +13,14 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { reducers} from './store/reducers/index';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './store/effects';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { httpInterceptorProviders } from './interceptors';
 import { GlobalEffects } from './store/effects/global.effects';
-
+import { AppcommonModule } from './modules/appcommon/appcommon.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirebaseModule } from './modules/firebase/firebase.module';
 
 const config = {
   apiKey: 'AIzaSyCzD9xDENyLbtw-LGgtpIELG5YVd37KciI',
@@ -41,6 +42,7 @@ const config = {
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     AdminModule,
     HomeModule,
     HttpClientModule,
@@ -48,7 +50,11 @@ const config = {
     HttpLinkModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([GlobalEffects]),
-    NgbModule
+    NgbModule,
+    AppcommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FirebaseModule
   ],
   providers: [ httpInterceptorProviders ],
   bootstrap: [AppComponent]

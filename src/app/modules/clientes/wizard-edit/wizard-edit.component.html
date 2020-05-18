@@ -1,54 +1,12 @@
+<app-card title="Editar Cliente" *ngIf="nuevoClienteForm">
 
-<div class="row d-flex justify-content-center">
-<div class="col-10">
+  <app-datos-personales-edit [parentForm]="nuevoClienteForm">
 
-  <app-card title="Editar Cliente">
+  </app-datos-personales-edit>
 
-    <div card-body-content>
+  <app-datos-laborales-edit [parentForm]="nuevoClienteForm">
 
-      <div class="wizard-navigation">
-        <ul class="nav nav-pills d-flex justify-content-around">
-          <li class="nav-item">
-            <a class="nav-link"  
-              [ngClass]="{'active': steps.datosPersonalesActivo}">
-              Datos Personales
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" 
-              [ngClass]="{'active': steps.datosLaboralesActivo}">
-              Datos Laborales
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" 
-              [ngClass]="{'active': steps.resumen}">
-              Resumen
-            </a>
-          </li>
-        </ul>
-      </div>
+  </app-datos-laborales-edit>
 
-
-    <form [formGroup]="nuevoClienteForm">
-      <app-datos-personales-edit [parentForm]="nuevoClienteForm"
-                            *ngIf="steps.datosPersonalesActivo"
-                            (siguiente)="DatosLaborales()"></app-datos-personales-edit>
-      
-      <app-datos-laborales-edit [parentForm]="nuevoClienteForm"
-                            *ngIf="steps.datosLaboralesActivo"
-                            (anterior)="DatosPersonales()"
-                            (siguiente)="Resumen()"></app-datos-laborales-edit>
-
-      <app-resumen-edit [parentForm]="nuevoClienteForm"
-                            *ngIf="steps.resumen"
-                            (anterior)="DatosLaborales()"
-                            (siguiente)="Guardar()"></app-resumen-edit>
-    </form>
-    
-  </div>
-
-  </app-card>
-</div>
-
-</div>
+  <button class="btn btn-primary">GUARDAR</button>
+</app-card>

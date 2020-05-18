@@ -19,6 +19,7 @@ import { WizardEditComponent } from './wizard-edit/wizard-edit.component';
 import { DatosPersonalesEditComponent } from './wizard-edit/partes/datos-personales/datos-personales-edit.component';
 import { DatosLaboralesEditComponent } from './wizard-edit/partes/datos-laborales/datos-laborales-edit.component';
 import { ResumenEditComponent } from './wizard-edit/partes/resumen/resumen-edit.component';
+import { ListaClientesService } from './lista-clientes/lista-clientes.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { ResumenEditComponent } from './wizard-edit/partes/resumen/resumen-edit.
                   DatosLaboralesEditComponent,
                   ResumenEditComponent],
   exports: [WizardComponent],
-  providers: [WizardService],
+  providers: [WizardService, ListaClientesService],
   imports: [
     CommonModule,
     AppcommonModule,

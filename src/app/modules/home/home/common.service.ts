@@ -1,6 +1,4 @@
 import { Injectable, Query } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Cliente } from 'src/app/models/cliente';
 import { Apollo, QueryRef } from 'apollo-angular';
 
 @Injectable({
@@ -14,7 +12,7 @@ export class CommonService {
     return this.apollo.watchQuery<Query>({
             query,
             variables,
-            fetchPolicy: "network-only"
-          })
+            fetchPolicy: 'network-only'
+          });
   }
 }

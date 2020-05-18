@@ -1,0 +1,64 @@
+<app-card title="Clientes">
+    <div card-header-buttons>
+        <button class="btn btn-success btn-link"
+                style="color: white"
+                [routerLink]="['..','nuevo-parametro']">
+            <span class="btn-label">
+              <i class="material-icons">add</i>
+            </span>
+            Nuevo
+          <div class="ripple-container"></div></button>
+    </div>
+    <div *ngIf="clientes$ | async as clientes; else empty">
+      <div class="table-responsive table-hover">
+        <table class="table">
+          <thead class=" text-primary">
+            <tr><th>
+              ID
+            </th>
+            <th>
+              TNA
+            </th>
+            <th>
+              CFT
+            </th>
+            <th>
+              Tasa de Mora
+            </th>
+            <th>
+              TEM
+            </th>
+            <th>
+            </th>
+          </tr></thead>
+          <tbody>
+            <tr *ngFor="let parametro of parametros">
+              <td>
+                {{parametro.ID}}
+              </td>
+              <td>
+                {{parametro.TNA}}
+              </td>
+              <td>
+                {{parametro.CFT}}
+              </td>
+              <td>
+                {{parametro.TasaMora}}
+              </td>
+              <td>
+                {{parametro.TEM}}
+              </td>
+              <td>
+                Oud-Turnhout
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <app-footer-pager pageName="PageCliente" take="5"></app-footer-pager> -->
+  
+      </div>
+    </div>
+    <ng-template #empty>
+      <app-empty-state image="add-content" title="No hay parametros por aquí"></app-empty-state>
+    </ng-template>
+  </app-card>

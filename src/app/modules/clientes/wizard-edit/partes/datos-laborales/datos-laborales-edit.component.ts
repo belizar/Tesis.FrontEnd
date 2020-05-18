@@ -11,7 +11,7 @@ export class DatosLaboralesEditComponent implements OnInit {
 
   @Input()
   parentForm: FormGroup;
-  
+
   @Output()
   anterior = new EventEmitter();
 
@@ -29,11 +29,11 @@ export class DatosLaboralesEditComponent implements OnInit {
     return this.parentForm.get('datosLaborales');
   }
 
-  get DatosLaboralesControl(): FormArray { 
+  get DatosLaboralesControl(): FormArray {
     return this.parentForm.get('datosLaborales') as FormArray;
   }
-  
-  get TelefonosControl(): FormArray { 
+
+  get TelefonosControl(): FormArray {
     return this.datosLaboralesForm.get('Telefonos') as FormArray;
   }
 
@@ -51,13 +51,15 @@ export class DatosLaboralesEditComponent implements OnInit {
     this.TelefonosControl.removeAt(index);
   }
 
-
-  private _siguiente() {
-    this.siguiente.emit();
+  getTitle(index) {
+    return this.DatosLaboralesControl.controls[index].value.LugarDeTrabajo;
+  }
+  tieneId(index) {
+    return this.DatosLaboralesControl.controls[index].value.ID ? true : false;
   }
 
-  private _anterior() {
-    this.anterior.emit();
+  nuevoTrabajo() {
+    this.DatosLaboralesControl.controls.unshift(this.wizardService.NuevoDatosLaborales());
   }
 
 }

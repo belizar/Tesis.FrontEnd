@@ -44,6 +44,7 @@ export class DatosPersonalesComponent implements OnInit {
   }
 
   private _siguiente() {
+
     if (this.datosPersonalesForm.valid) {
       this.siguiente.emit();
     }

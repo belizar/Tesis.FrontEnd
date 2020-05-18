@@ -1,5 +1,6 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
+import { Component, OnInit, forwardRef, Input, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 
 @Component({
   selector: 'app-input',
@@ -12,20 +13,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }]
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
- 
+
   @Input()
   name: string;
 
   @Input()
-  label: string = 'floating-label';
+  label = 'floating-label';
 
   value: string;
 
-  disable: boolean = false;
+  disable = false;
 
   @Input()
-  readonly: boolean = false;
-  
+  readonly = false;
+
+  @Output()
+  blur = new EventEmitter<any>();
+
   onChange = (value: string) => {};
 
   onTouched = () => {};
@@ -33,6 +37,10 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onBlur() {
+    this.blur.emit();
   }
 
   writeValue(value: any): void {

@@ -13,7 +13,7 @@ export class CollapsiblePanelComponent implements OnInit {
   @Input()
   title: string;
 
-  constructor() { }
+constructor() { }
 
   ngOnInit() {
   }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  graphql: 'https://localhost:5001/graphql/',
+  graphql: 'https://us-central1-tesis-213dc.cloudfunctions.net/graphql',
   api: 'https://localhost:5001/'
 };
 

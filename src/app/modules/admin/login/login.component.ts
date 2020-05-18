@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { AuthService } from '../../../auth/auth.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NotificationService } from '../../appcommon/notification/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private notificationService: NotificationService) {
   }
   ngOnInit() {
     this.route.queryParams
@@ -27,6 +29,9 @@ export class LoginComponent implements OnInit {
     this.auth
         .logging
         .subscribe(logging => this.isWaiting = logging);
+    this.auth.showError.subscribe(() => {
+      this.notificationService.Error('EPIC FAIL: Verifique su usuario y su contraseña');
+    });
   }
 
   async login(event, userName, password) {
