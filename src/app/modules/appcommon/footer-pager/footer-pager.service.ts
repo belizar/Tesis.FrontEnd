@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CommonService } from '../../home/home/common.service';
-import { getPage } from 'src/app/graphql/queries';
+import { queryGetPage } from 'src/app/graphql/queries';
 import { Subject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 
@@ -18,12 +18,12 @@ export class FooterPagerService {
   getPage(page, take, skip = 0) {
     this.page = page;
     return this.common
-               .Apollo(getPage(page), {Take: take,  Skip: skip})
+               .Apollo(queryGetPage(page), {Take: take,  Skip: skip})
                .valueChanges
                .pipe(
-                 tap(res => this.valueChanges.next(res.data.PageCliente.Data)),
+                 tap(res => this.valueChanges.next(res.data[page].Data)),
                  map(res => ({
-                   Total: res.data.PageCliente.Total
+                   Total: res.data[page].Total
                  }))
                 );
   }

@@ -1,4 +1,5 @@
 import { Cliente } from './cliente';
+import { ParametroCrediticio } from './parametro-crediticio';
 
 export class Cuota {
   ID?: number;
@@ -41,10 +42,3 @@ export class EstadoDeCredito {
 
 
 
-export class ParametroCrediticio {
-  ID?: number;
-  TNA?: number;
-  CFT?: number;
-  TasaMora?: number;
-  TEM?: number;
-}

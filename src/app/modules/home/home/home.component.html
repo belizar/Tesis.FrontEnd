@@ -1,10 +1,6 @@
 <div class="wrapper ">
   <div class="sidebar" data-color="rose" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
-    <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-      Tip 2: you can also add an image using data-image tag
-  -->
     <div class="logo">
       <a href="http://www.creative-tim.com" class="simple-text logo-mini">
         A
@@ -72,6 +68,14 @@
                           [routerLink]="['creditos', 'ver']"
                           routerLinkActive="active"
                           text="Ver"></app-nav-item>
+            <app-nav-item icon="add" 
+                          [routerLink]="['creditos', 'nuevo-parametro']"
+                          routerLinkActive="active"
+                          text="Nuevo Parámetro Crediticio"></app-nav-item>
+            <app-nav-item icon="view_list" 
+                          [routerLink]="['creditos', 'ver-parametros']"
+                          routerLinkActive="active"
+                          text="Ver Parámetros Crediticios"></app-nav-item>
       </app-collapsable-nav-item>
       <app-nav-item icon="account_balance" 
       routerLink="/app/contabilidad"

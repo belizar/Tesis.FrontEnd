@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { switchMap, map, catchError, tap } from 'rxjs/operators';
-import { getClientes, getCliente } from 'src/app/graphql/queries';
+import { queryGetClientes, queryGetCliente } from 'src/app/graphql/queries';
 import { MostrarClientesComplete, CrearClienteComplete, MostrarClienteComplete } from '../actions/clientes.actions';
 import { ClientesService } from 'src/app/modules/clientes/clientes.service';
 import { CommonService } from 'src/app/modules/home/home/common.service';
@@ -24,7 +24,7 @@ export class ClientesEffects {
                                           .pipe(
                                             ofType('MOSTRAR_CLIENTES'),
                                             switchMap( payload =>
-                                              this.common.Apollo(getClientes)
+                                              this.common.Apollo(queryGetClientes)
                                                   .valueChanges
                                                   .pipe(
                                                     map(result => {
@@ -60,7 +60,7 @@ MostrarCliente: Observable<any> = this.actions
                                         .pipe(
                                           ofType('MOSTRAR_CLIENTE'),
                                           switchMap( ({id}) => {
-                                            return this.common.Apollo(getCliente, {Id: id})
+                                            return this.common.Apollo(queryGetCliente, {Id: id})
                                               .valueChanges
                                               .pipe(
                                                 map(({data: {Cliente} }) => {

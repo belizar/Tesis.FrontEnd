@@ -10,6 +10,7 @@ export class AuthService {
 
   user: User;
   logging = new EventEmitter<boolean>();
+  showError = new EventEmitter<any>();
 
   constructor(public afAuth: AngularFireAuth, public router: Router) { 
     this.authStateWillChange();
@@ -29,7 +30,8 @@ export class AuthService {
   async login(email: string, password: string) {
     try {
       this.logging.emit(true);
-      await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+      console.log(result);
       this.logging.emit(false);
       // this.router.navigate(['app']);
       this.afAuth.auth.currentUser.getIdToken(/* forceRefresh */ true).then((idToken) => {
@@ -37,10 +39,13 @@ export class AuthService {
         // ...
         console.log(idToken);
       }).catch( (error) => {
+        this.logging.emit(false);
+        this.showError.emit();
         // Handle error
       });
     } catch (e) {
-
+      this.logging.emit(false);
+      this.showError.emit();
     }
   }
 

@@ -1,7 +1,30 @@
 
 import gql from 'graphql-tag';
 
-export const getClientes =  gql`
+
+export const queryGetParametros = gql`
+    query {
+            Parametros {
+              ID
+              CFT
+              TasaMora
+              TEM
+            }
+          }
+`;
+
+export const queryGet = gql`
+  query {
+    clientes {
+      Apellido
+      Nombre
+      CUIL
+      Email
+      FechaDeNacimiento
+    }
+  }`;
+
+export const queryGetClientes = gql`
                               query {
                                 Clientes {
                                   ID
@@ -29,7 +52,7 @@ export const getClientes =  gql`
                               `;
 
 
-export const getCliente  =  gql`
+export const queryGetCliente = gql`
                                 query Cliente($Id: Int!) {
                                   Cliente(Id: $Id) {
                                     Apellido
@@ -79,7 +102,7 @@ export const getCliente  =  gql`
 
 
 
-export const getPageCliente  =  gql`
+export const queryGetPageCliente = gql`
 query Cliente($Take: Int!, $Skip: Int!) {
   PageCliente(Take: $Take, Skip: $Skip) {
     Data {
@@ -94,8 +117,8 @@ query Cliente($Take: Int!, $Skip: Int!) {
 `;
 
 
-export const getPage = (page) => {
+export const queryGetPage = (page) => {
   switch (page) {
-    case 'PageCliente': return getPageCliente;
+    case 'PageCliente': return queryGetPageCliente;
   }
 };

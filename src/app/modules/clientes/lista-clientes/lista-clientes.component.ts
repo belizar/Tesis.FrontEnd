@@ -8,6 +8,8 @@ import * as $ from 'jquery';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { FooterPagerService } from '../../appcommon/footer-pager/footer-pager.service';
+import { ListaClientesService } from './lista-clientes.service';
+import { ModalPreview } from 'src/app/models/preview-modal';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -18,19 +20,33 @@ export class ListaClientesComponent implements OnInit {
 
   storeSubscription: Subscription;
   clientes$: Observable<any>;
+  showModal = false;
+  modalModel: ModalPreview;
+  clientId: number;
 
-  constructor(private footerPageService: FooterPagerService, private router: Router) { }
+  constructor(private listaClientesService: ListaClientesService) { }
 
   ngOnInit() {
-    this.footerPageService
-        .getPage('PageCliente', 5, 0)
-        .subscribe();
-    this.clientes$ = this.footerPageService
-                         .valueChanges;
+    this.clientes$ = this.listaClientesService.clientes$;
+    this.listaClientesService.init();
   }
 
-  editar(id: number) {
-    this.router.navigate(['app', 'clientes', 'editar', id]);
+  editar() {
+    this.listaClientesService.editar(this.clientId);
+  }
+
+  previewClient(id: number) {
+    this.clientId = id;
+    this.listaClientesService
+        .getModalDataCliente(id)
+        .subscribe(res => {
+          this.modalModel = res;
+          this.showModal = true;
+        });
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 
 }

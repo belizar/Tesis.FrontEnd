@@ -18,6 +18,7 @@ export class FooterPagerComponent implements OnInit {
   pages: Observable<any>;
 
   totalPages = 0;
+  total = 0;
 
   @Input()
   pageName: string;
@@ -31,7 +32,7 @@ export class FooterPagerComponent implements OnInit {
   }
 
   createPages(total) {
-    console.log(total);
+    this.total = total;
     this.pages = range(1, Math.ceil(total / this.take)).pipe(toArray(), tap(res => this.totalPages = res.length));
   }
 

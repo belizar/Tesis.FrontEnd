@@ -5,7 +5,7 @@ import { State } from 'src/app/store/reducers/clientes.reducer';
 import { Cliente, Trabajos } from 'src/app/models/cliente';
 import { CrearCliente, MostrarCliente } from 'src/app/store/actions/clientes.actions';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { WizardService } from '../wizard/wizard.service';
 
@@ -25,20 +25,18 @@ export class WizardEditComponent implements OnInit {
     resumen: false
   };
 
-  constructor(private store: Store<State>, 
+  constructor(private store: Store<State>,
               private wizardService: WizardService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.pipe(
-      map(paramMap => paramMap.get('id'))
-    ).subscribe( id => {
-      this.store.dispatch(MostrarCliente({id}));
-    });
-
-    this.store
-        .pipe(map( ({clientes: {cliente}}: any) => cliente))
-        .subscribe(cliente => this.CrearForm(cliente));
+      map(paramMap => paramMap.get('id')),
+      switchMap( (id) => {
+        return this.wizardService
+                   .GetClienteForm(id);
+              })
+    ).subscribe(form => this.nuevoClienteForm = form);
 }
 
   CrearForm(cliente: Cliente) {

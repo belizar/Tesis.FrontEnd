@@ -11,6 +11,11 @@ body {
   height: 100%;
 }
 
+.thin-row {
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
 a.disabled {
   color: gray;
   cursor: not-allowed;

@@ -1,0 +1,28 @@
+<div class="swal2-container swal2-center swal2-fade swal2-shown" style="align-self: center;overflow-y: auto;">
+  <div aria-labelledby="swal2-title" 
+        aria-describedby="swal2-content"
+        class="swal2-popup swal2-modal swal2-show"
+        tabindex="-1" 
+        role="dialog"
+        aria-live="assertive"
+        aria-modal="true"
+        style="justify-content: normal; display: flex; self: center;margin-left: auto;margin-right: 0;margin-top: 0;height: 100vh;">
+      <div class="swal2-header">
+          <h2 class="swal2-title" id="swal2-title">{{title}}</h2>
+          <button type="button" class="swal2-close" (click)="close()">×</button>
+      </div>
+      <div class="body">
+        <button type="button"
+                class="btn btn-primary"
+                (click)="editar()">Editar</button>
+        <div *ngFor="let section of data.sections" class="section">
+          <hr/>
+            {{section.name}}
+          <hr/>
+          <span *ngFor="let item of section.content">
+            <strong>{{item.title}}:</strong> {{item.content}}
+          </span>
+        </div>
+      </div>
+  </div>
+</div>

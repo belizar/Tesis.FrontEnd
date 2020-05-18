@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Cliente, Trabajos } from 'src/app/models/cliente';
-import * as moment from 'moment';
+import { CommonService } from '../../home/home/common.service';
+import { queryGetCliente } from 'src/app/graphql/queries';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WizardService {
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private common: CommonService) {
   }
 
   CrearForm(cliente: Cliente = null) {
@@ -85,8 +87,8 @@ export class WizardService {
       });
   }
 
-  NuevoDatosLaborales(trabajo: Trabajos) {
-    return new FormGroup({
+  NuevoDatosLaborales(trabajo: Trabajos = null) {
+    return trabajo ? new FormGroup({
       ID: new FormControl(trabajo.ID),
       LugarDeTrabajo: new FormControl(trabajo.LugarDeTrabajo),
       Sueldo: new FormControl(trabajo.sueldo),
@@ -102,7 +104,22 @@ export class WizardService {
         Piso: new FormControl(trabajo.DomicilioLaboral.Piso),
         Depto: new FormControl(trabajo.DomicilioLaboral.Depto),
           })
-        });
+        }) : new FormGroup({
+          LugarDeTrabajo: new FormControl(null, Validators.required),
+          Sueldo: new FormControl(null, Validators.required),
+          Cargo: new FormControl(null, Validators.required),
+          FechaDeIngreso: new FormControl(null, Validators.required),
+          TelefonoLaboral: new FormControl(null, Validators.required),
+          DomicilioLaboral: new FormGroup({
+            Localidad: new FormControl(null, Validators.required),
+            Barrio: new FormControl(null, Validators.required),
+            Calle: new FormControl(null, Validators.required),
+            Lote: new FormControl(),
+            Numero: new FormControl(),
+            Piso: new FormControl(),
+            Depto: new FormControl(),
+              })
+            });
   }
 
   NuevoTelefono(numero, descripcion, id = null) {
@@ -114,6 +131,16 @@ export class WizardService {
     if (id) { form.addControl('ID', new FormControl(id)); }
 
     return form;
+  }
+
+  GetClienteForm(id) {
+    return this.common.Apollo(queryGetCliente, {Id: id})
+    .valueChanges
+    .pipe(
+      map(({data: {Cliente} }) => {
+          return this.CrearForm( Cliente[0]);
+        }
+      ));
   }
 
 }

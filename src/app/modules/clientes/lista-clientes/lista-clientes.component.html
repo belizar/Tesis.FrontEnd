@@ -42,11 +42,10 @@
             <td>
               Oud-Turnhout
             </td>
-            <td>
-              <button class="btn btn-primary  btn-round btn-fab" (click)="editar(cliente.ID)">
-                <i class="material-icons">edit</i>
-                <div class="ripple-container"></div>
-              </button>
+            <td class="td-actions text-right">
+              <button type="button btn-primary" rel="tooltip" class="btn btn-info btn-round" (click)="previewClient(cliente.ID)">
+                <i class="material-icons">visibility</i>
+                <div class="ripple-container"></div></button>
             </td>
           </tr>
         </tbody>
@@ -59,3 +58,8 @@
     <app-empty-state image="add-content" title="No hay clientes por aquí"></app-empty-state>
   </ng-template>
 </app-card>
+<app-preview-modal *ngIf="showModal"
+                   title="Cliente"
+                   [data]="modalModel"
+                   (toClose)="closeModal()"
+                   (toEdit)="editar()"></app-preview-modal>
