@@ -33,7 +33,7 @@
     "firebase": "^6.4.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "moment": "^2.24.0",
     "ngx-take-until-destroy": "^5.4.0",
     "rxjs": "~6.3.3",
