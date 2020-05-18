@@ -28,5 +28,5 @@ steps:
     ArtifactName: 'FE_$(Build.BuildNumber)'
 
 - script: |
-    firebase deploy
+    firebase deploy --token $FIREBASE_TOKEN
   displayName: 'deploy'
